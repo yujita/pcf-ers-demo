@@ -9,11 +9,14 @@ ribbon:
 spring:
   application:
     name: attendees
-    
-# Using macros that are replaced by maven build
-info:
-  build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
+
+
+# don't do this in production, we are doing it here so that
+# we can do features of Cloud Foundry without having to explain
+# spring security
+management:
+  security:
+    enabled: false
+  info:
+    git:
+      mode: full
