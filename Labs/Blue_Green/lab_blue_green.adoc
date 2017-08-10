@@ -1,10 +1,12 @@
 :compat-mode:
-= Lab 4 - Blue Green Deployment
+= Blue Green Deployment
 
 [abstract]
 --
 You'll learn how to manage application upgrades with a blue-green deployment
 --
+
+Estimated Time: 25 minutes
 
 == Setup
 

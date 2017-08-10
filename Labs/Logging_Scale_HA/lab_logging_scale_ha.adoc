@@ -1,5 +1,5 @@
 :compat-mode:
-= Lab 2 - Logging, Scale and HA
+= Logging, Scale and HA
 
 [abstract]
 --
@@ -7,6 +7,8 @@ How PCF facilitates application management, including: access application
 logs, scale an application, access events and handle failed application 
 instances
 --
+
+Estimated Time: 30 minutes
 
 == Access Application Logs
 

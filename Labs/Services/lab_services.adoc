@@ -1,5 +1,5 @@
 :compat-mode:
-= Lab 3 - Binding to Cloud Foundry Services
+= Binding to Cloud Foundry Services
 
 [abstract]
 --
@@ -12,6 +12,8 @@ Create/Delete:: These operations create or delete instances of a service.
 For a database this could mean creating/deleting a schema in an existing multitenant cluster or creating/deleting a dedicated database cluster.
 Bind/Unbind:: These operations create or delete unique credential sets for an existing service instance that can then be injected into the environment of an application instance.
 --
+
+Estimated Time: 30 minutes
 
 == A Bit of Review
 

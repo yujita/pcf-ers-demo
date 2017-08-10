@@ -1,4 +1,4 @@
-= Lab 1 - Push the demo application
+= Push the demo application
 
 [abstract]
 --
@@ -6,6 +6,8 @@ The prime directive of Pivotal Cloud Foundry is to host applications. We are goi
 
 By the end of this lab you should have your attendees application up and running in your account.
 --
+
+Estimated Time: 30 minutes
 
 == Set your target environment
 
