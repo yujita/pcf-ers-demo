@@ -1,14 +1,17 @@
 package io.pivotal.pcf.sme.ers.client.ui.controller;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +38,8 @@ import io.pivotal.pcf.sme.ers.server.repo.AttendeeRepository;
 @RestController
 public class AttendeeService {
 
-	private Log log = LogFactory.getLog(AttendeeService.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(AttendeeService.class);
 	
 	/// Polluting with server code (Attendee Model Object)
 	// http://blog.zenika.com/2012/06/15/hateoas-paging-with-spring-mvc-and-spring-data-jpa/
@@ -93,43 +97,69 @@ public class AttendeeService {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	Map<String, Object> addAppEnv() throws Exception {
+	public Map<String, Object> addAppEnv(HttpServletRequest request)
+			throws Exception {
 
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 
-		String instanceIndex = getVcapApplicationMap().getOrDefault("instance_index", "no index environment variable")
-				.toString();
+		if (System.getenv("PORT") == null) {
+			modelMap.put("containerAddr", "localhost");
+		} else {
+			modelMap.put("containerAddr", request.getLocalAddr() + ":"
+					+ request.getLocalPort());
+		}
+
+		String instanceIndex = getVcapApplicationMap().getOrDefault(
+				"instance_index", "no index environment variable").toString();
 		modelMap.put("instanceIndex", instanceIndex);
 
 		String instanceAddr = System.getenv("CF_INSTANCE_ADDR");
 		if (instanceAddr == null) {
-			instanceAddr = "running locally";
+			instanceAddr = "localhost";
 		}
 		modelMap.put("instanceAddr", instanceAddr);
 
-		String applicationName = (String) getVcapApplicationMap().getOrDefault("application_name",
-				"no name environment variable");
+		String applicationName = (String) getVcapApplicationMap().getOrDefault(
+				"application_name", "no name environment variable");
 		modelMap.put("applicationName", applicationName);
 
-		@SuppressWarnings("rawtypes")
-		Map services = getVcapServicesMap();
+		Map<String, ?> services = getVcapServicesMap();
+		services = parseServices(services);
 		modelMap.put("applicationServices", services);
+		String javaVersion = System.getProperty("java.version");
+		logger.debug("Java Version (unfiltered): {}", javaVersion);
 
-		// getting host local address
-		try {
-            InetAddress ipAddr = InetAddress.getLocalHost();
-    		modelMap.put("inetaddressLocalhost", ipAddr);
-        } catch (UnknownHostException ex) {
-            ex.printStackTrace();
-        }
-		
+		int pos = javaVersion.indexOf("-");
+		if (pos > -1) {
+			javaVersion = javaVersion.substring(0, pos);
+		}
+		logger.debug("Java Version (filtered): {}", javaVersion);
+
+		modelMap.put("javaVersion", javaVersion);
 		return modelMap;
+
 	}
 
 	///////////////////////////////////////
 	// Helper Methods
 	///////////////////////////////////////
 
+	   @SuppressWarnings("rawtypes")
+		private Map<String,Object> parseServices(Map<String, ?> services) {
+			Map<String,Object> servicesMap  = Collections.synchronizedMap(new LinkedHashMap<String,Object>());
+			for (Map.Entry<String,?> entry : services.entrySet()) {
+				List list = (List)entry.getValue();
+			    
+			    for (Object object : list) {
+					logger.debug("list: {}", object.getClass());
+			    	Map map = (Map)object;
+			    	//weird delimiter and UUID is to deal with multiple services of the same type
+				    servicesMap.put(entry.getKey() + "~~~" + UUID.randomUUID().toString(), map.get("name"));		    		
+				}
+			}
+			return servicesMap;
+			
+		}	
 	@SuppressWarnings("rawtypes")
 	private Map getVcapApplicationMap() throws Exception {
 		return getEnvMap("VCAP_APPLICATION");
@@ -150,7 +180,7 @@ public class AttendeeService {
 			return vcapMap;
 		}
 
-		log.warn(vcap + " not defined, returning empty Map");
+		logger.warn(vcap + " not defined, returning empty Map");
 		return new HashMap<String, String>();
 	}
 

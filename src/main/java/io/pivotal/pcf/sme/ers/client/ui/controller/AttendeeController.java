@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +48,8 @@ public class AttendeeController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/")
-	public String index(Model model) throws Exception {
-		addAppEnv(model);
+	public String index(HttpServletRequest request, Model model) throws Exception {
+		addAppEnv(request, model);
 		return "index";
 	}
 
@@ -61,9 +63,9 @@ public class AttendeeController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/basics", method = RequestMethod.GET)
-	public String kill(@RequestParam(value = "doit", required = false) boolean doit, Model model) throws Exception {
+	public String kill(HttpServletRequest request, @RequestParam(value = "doit", required = false) boolean doit, Model model) throws Exception {
 
-		addAppEnv(model);
+		addAppEnv(request, model);
 
 		if (doit) {
 			model.addAttribute("killed", true);
@@ -88,7 +90,7 @@ public class AttendeeController {
 	
 	@SuppressWarnings("resource")
 	@RequestMapping(value = "/ssh-file", method = RequestMethod.GET)
-	public String writeFile(Model model) throws Exception {
+	public String writeFile(HttpServletRequest request, Model model) throws Exception {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yy HH:mm:ss");
 		Date date = new Date();
@@ -99,7 +101,7 @@ public class AttendeeController {
 		w.flush();
 		
 		model.addAttribute("ssh_file", f.getAbsoluteFile());
-		addAppEnv(model);
+		addAppEnv(request, model);
 
 		return "basics";
 		
@@ -113,11 +115,11 @@ public class AttendeeController {
 	 * @return The path to the view.
 	 */
 	@RequestMapping(value = "/services", method = RequestMethod.GET)
-	public String attendees(Model model) throws Exception {
+	public String attendees(HttpServletRequest request, Model model) throws Exception {
 
 		model.addAttribute("attendees", attendeeService.getAttendees());
 		
-		addAppEnv(model);
+		addAppEnv(request, model);
 		return "services";
 	}
 	
@@ -129,10 +131,10 @@ public class AttendeeController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/clean", method = RequestMethod.GET)
-	public String clean(Model model) throws Exception {
+	public String clean(HttpServletRequest request, Model model) throws Exception {
 
 		attendeeService.deleteAll();
-		return attendees(model);
+		return attendees(request, model);
 	}
 	
 
@@ -154,7 +156,7 @@ public class AttendeeController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/add-attendee", method = RequestMethod.POST)
-	public String addAttendee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
+	public String addAttendee(HttpServletRequest request, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
 			@RequestParam("emailAddress") String emailAddress, Model model) throws Exception {
 
 		Attendee attendee = new Attendee();
@@ -165,7 +167,7 @@ public class AttendeeController {
 		attendeeService.add(attendee);
 		model.addAttribute("attendees", attendeeService.getAttendees());
 
-		addAppEnv(model);
+		addAppEnv(request, model);
 		return "services";
 	}
 
@@ -177,13 +179,13 @@ public class AttendeeController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/bluegreen")
-	public String bluegreen(Model model) throws Exception {
+	public String bluegreen(HttpServletRequest request, Model model) throws Exception {
 
 		for (String key : System.getenv().keySet()) {
 			System.out.println(key + ":" + System.getenv(key));
 		}
 
-		addAppEnv(model);
+		addAppEnv(request, model);
 
 		return "bluegreen";
 	}
@@ -192,9 +194,9 @@ public class AttendeeController {
 	// Helper Methods
 	///////////////////////////////////////
 
-	private void addAppEnv(Model model) throws Exception {
+	private void addAppEnv(HttpServletRequest request, Model model) throws Exception {
 
-		Map<String, Object> modelMap = attendeeService.addAppEnv();
+		Map<String, Object> modelMap = attendeeService.addAppEnv(request);
 		model.addAllAttributes(modelMap);
 	}
 
