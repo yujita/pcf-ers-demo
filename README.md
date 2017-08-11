@@ -47,6 +47,6 @@ Then go to the http://localhost:8080 in your browser
 Take a look at the manifest file for the recommended setting. Adjust them as per your environment.
 
 ## Labs/Demo Scripts summary
-We have a [Labs](https://github.com/Pivotal-Field-Engineering/pcf-ers-demo/tree/master/docs) folder to help you learn PCF. These labs can be used for workshops or self-training.    
+We have a [Labs](https://github.com/Pivotal-Field-Engineering/pcf-ers-demo/tree/master/Labs) folder to help you learn PCF. These labs can be used for workshops or self-training.    
 
 
