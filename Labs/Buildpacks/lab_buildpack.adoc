@@ -1,5 +1,7 @@
 :compat-mode:
 = Buildpack
+:toc: right
+
 
 [abstract]
 --

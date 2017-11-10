@@ -10,3 +10,11 @@ Tested with PCF 1.11, PCFDev, Pivotal Web Services and PEZ (Internal Pivotal Env
 * [Blue Green Deployment](https://github.com/Pivotal-Field-Engineering/pcf-ers-demo/blob/master/Labs/Blue_Green/lab_blue_green.adoc)
 * [Buildpacks](https://github.com/Pivotal-Field-Engineering/pcf-ers-demo/blob/master/Labs/Buildpacks/lab_buildpack.adoc)
 * [Spring Boot Integration ]()
+
+## Workshop Site
+
+We're working on using asciidoctor to generate an simple workshop site.
+
+```
+asciidoctor "**/*.adoc" -D site
+```

@@ -1,5 +1,7 @@
 :compat-mode:
 = Binding to Cloud Foundry Services
+:toc: right
+
 
 [abstract]
 --

@@ -1,0 +1,31 @@
+:last-update-label!:
+:icons: font
+include::header.adoc[]
+
+== Basic Pivotal Cloud Foundry Developer
+
+[caption=""]
+[%autowidth.spread]
+[frame=topbot]
+[grid=rows]
+[cols="<,>,>"]
+[.center.text-center]
+.Basic Pivotal Cloud Foundry Developer
+|===
+
+|Push to the cloud | <<#,Slides>> | <<lab_application_push.adoc#,Lab>>
+
+|Orgs, Spaces and Roles | <<#,Slides>> | <<lab_quotas.adoc#,Lab>>
+
+|Logging, Scale, Ha | <<#,Slides>> | <<lab_quotas.adoc#,Lab>>
+
+|Services | <<#,Slides>> | <<lab_services.adoc#,Lab>>
+
+|Buildpacks | <<#,Slides>> | <<lab_buildpack.adoc#,Lab>>
+
+|Manifests | <<#,Slides>> | <<lab_manifest.adoc#,Lab>>
+
+|===
+
+
+include::footer.adoc[]

@@ -1,5 +1,7 @@
 :compat-mode:
 = Bosh Troubleshooting
+:toc: right
+
 
 [abstract]
 --

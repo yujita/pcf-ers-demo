@@ -1,5 +1,7 @@
 :compat-mode:
 = Logging, Scale and HA
+:toc: right
+
 
 [abstract]
 --

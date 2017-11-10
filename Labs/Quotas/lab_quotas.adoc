@@ -1,5 +1,7 @@
 :compat-mode:
 = Quotas
+:toc: right
+
 
 [abstract]
 --

@@ -1,5 +1,7 @@
 :compat-mode:
 = Blue Green Deployment
+:toc: right
+
 
 [abstract]
 --
