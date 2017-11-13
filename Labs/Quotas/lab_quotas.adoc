@@ -1,6 +1,8 @@
 :compat-mode:
 = Quotas
 :toc: right
+:imagesdir: ../images
+
 
 
 [abstract]

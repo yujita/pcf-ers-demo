@@ -1,6 +1,7 @@
 :compat-mode:
 = Bosh Troubleshooting
 :toc: right
+:imagesdir: ../images
 
 
 [abstract]
@@ -69,7 +70,7 @@ If you receive the message: `nohup: redirecting stderr to stdout`, you can safel
 +
 . Browse to Ops Manager.  You will be prompted to enter your decryption passphrase.
 +
-image::../images/decrypt.png[]
+image::decrypt.png[]
 +
 . Login to Ops Manager.
 
@@ -89,7 +90,7 @@ Ops Manager has a `debug` endpoint that can be useful when filing bug reports or
 
 . Browse to the `Status` tab of the `Ops Manager Director` tile and record the IP.
 +
-image::../images/ ::ops-mgr-job-ip.png[]
+image::ops-mgr-job-ip.png[]
 +
 . Browse to the `Credentials` tab of the `Ops Manager Director` tile.
 +
@@ -164,7 +165,7 @@ $ bosh instances --ps
 +
 To find it easily, select the `Hosts and Cluster` view.  On the left hand navigation, expand your vCenter IP address and `Datacenter` and select your RP01.
 +
-image::../images/ ::host-and-cluster-view.png[]
+image::host-and-cluster-view.png[]
 +
 Open the `Virtual Machines` tab and scroll to the right and use the `job` column.
 +
@@ -262,7 +263,7 @@ In the form, enter the following values (if a value is not specified, accept the
 | password  | (provided by your instructor)
 |===
 
-image::../images/ ::win-scp.png[]
+image::win-scp.png[]
 
 Click `Login`.
 
@@ -314,7 +315,7 @@ $ /var/vcap/bosh/bin/monit status
 +
 . Locate the `pid` from the `monit status` output.
 +
-image::../images/ ::bosh-troubleshooting-rep-pid.png[]
+image::bosh-troubleshooting-rep-pid.png[]
 +
 . Kill the `rep` process.
 +
