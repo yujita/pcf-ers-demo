@@ -22,7 +22,7 @@ $ cf scale attendees -i 2
 . Read about using Blue-Green Deployments to reduce downtime and risk.
 . Browse to the attendees Blue-Green page.
 +
-image::blue_green1.png[]
+image::../images/blue_green1.png[]
 +
 . Lets assume that the deployed application is version 1. Let's generate some traffic. Press the `Start` button.
 +
@@ -73,7 +73,7 @@ $ cf start attendees-v2
 +
 Open a new tab and view version 2 of `attendees` in your browser. Take note of the application name.
 +
-image::blue_green2.png[]
+image::../images/blue_green2.png[]
 +
 At this point in the deployment process, you could do further testing of the version you are about to release before exposing customers to it.
 +
@@ -87,7 +87,7 @@ $ cf map-route attendees-v2 apps.pcf.homelab.lan -n attendees-doxastic-progeniti
 +
 . Return to browser tab where you started the load. You should see that it is starting to send requests to version 2.
 +
-image::blue_green3.png[]
+image::../images/blue_green3.png[]
 +
 . Press the `Reset` button, so we can see how the load get distributed across app instances.
 +
@@ -104,7 +104,7 @@ attendees-v2             started           1/1         768M     1G     ...
 ----
 You should see about a third of the requests going to version 2.
 +
-image::blue_green4.png[]
+image::../images/blue_green4.png[]
 +
 . Move more traffic to version 2.
 +
@@ -125,7 +125,7 @@ $ cf unmap-route attendees apps.pcf.homelab.lan -n attendees-doxastic-progenitiv
 ----
 If you `Reset` the load generator, you will see all the traffic goes to `attendees-v2`.
 +
-image::blue_green5.png[]
+image::../images/blue_green5.png[]
 +
 *_NOTE:_* Refreshing the entire page will update the application name.
 +

@@ -10,7 +10,7 @@ How to control usage in your Pivotal Cloud Foundry orgs and spaces using quotas
 
 Estimated Time: 25 minutes
 
-# Requirements
+== Requirements
 
 [Lab Requirements](../requirements)
 
@@ -71,7 +71,7 @@ For example:
 $ cf org dnr-org
 ----
 
-# Create a New Space
+== Create a New Space
 
 1) Log in as the `OrgManager` user (john.q.manager@pivotal.io) created in the [previous lab](../orgs-spaces-roles).
 ----
@@ -93,7 +93,7 @@ $ cf set-space-role john.q.developer@pivotal.io dnr-org staging SpaceDeveloper
 
 
 
-# Simulate Developer Usage
+== Simulate Developer Usage
 
 1) Log in as the `SpaceDeveloper` (john.q.developer@pivotal.io) you created in the [previous lab](../orgs-spaces-roles).  Target the `dev` space.
 
@@ -129,7 +129,7 @@ $ cf create-service app-autoscaler bronze a1
 * When targeting the `staging` space, creating the first service instance(`a1`) should have failed.  Why?
 * When an `org` contains multiple `spaces` how can one prohibit a single space from using all the quota?
 
-# Be a Good Citizen
+== Be a Good Citizen
 
 1) Target the `dev` space.
 
@@ -144,7 +144,7 @@ $ cf delete-service a2
 ----
 
 
-# Create and Set a Space Quota
+== Create and Set a Space Quota
 
 1) Log in as the `OrgManager` user (john.q.manager@pivotal.io) created in the [previous lab](../orgs-spaces-roles).  Target the `dev` space.
 
@@ -187,7 +187,7 @@ $ cf space dev
 $ cf space staging
 ----
 
-# Simulate Developer Usage
+== Simulate Developer Usage
 
 1) Log in as the `SpaceDeveloper` (john.q.developer@pivotal.io) you created in the [previous lab](../orgs-spaces-roles).  Target the `dev` space.
 
@@ -223,7 +223,7 @@ $ cf create-service app-autoscaler bronze a1
 * What would happen if you were to change your space quota to allow ten service instances?
 * What command would you use to update the `default` quota?
 
-# Cleanup
+== Cleanup
 
 1) Delete the `app-autoscaler` service instance.
 

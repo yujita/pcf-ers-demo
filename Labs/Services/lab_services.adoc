@@ -76,7 +76,7 @@ The subset of the output we're interested in is located near the very top, title
 ----
 System-Provided:
 {
- "VCAP_SERVICES": {
+ "VCAP_SERVICES": { // <1>
   "p-mysql": [
    {
     "credentials": {
@@ -85,7 +85,7 @@ System-Provided:
      "name": "cf_d873fccc_8006_4905_b2e3_11e33be27024",
      "password": "kSvTq9nKboxqi89X",
      "port": 3306,
-     "uri": "mysql://Dk5XrtM1e4K5yMcG:kSvTq9nKboxqi89X@10.30.30.35:3306/cf_d873fccc_8006_4905_b2e3_11e33be27024?reconnect=true",
+     "uri": "mysql://Dk5XrtM1e4K5yMcG:kSvTq9nKboxqi89X@10.30.30.35:3306/cf_d873fccc_8006_4905_b2e3_11e33be27024?reconnect=true", // <2>
      "username": "Dk5XrtM1e4K5yMcG"
     },
     "label": "p-mysql",
@@ -104,7 +104,7 @@ System-Provided:
 }
 
 {
- "VCAP_APPLICATION": {
+ "VCAP_APPLICATION": { 
   "application_id": "4770318d-0c2b-406b-915a-d3c420003309",
   "application_name": "attendees",
   "application_uris": [

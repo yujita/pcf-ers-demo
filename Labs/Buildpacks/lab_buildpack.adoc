@@ -78,7 +78,7 @@ $ cf restage attendees
 * What other items are easily customized with the Java Buildpack?
 * If you use Java, what items do you think would need customization in your environment?
 
-= Create a Buildpack
+== Create a Buildpack
 . Read about adding buildpacks to your http://docs.pivotal.io/pivotalcf/adminguide/buildpacks.html[Cloud Foundry Installation].
 . Create a new buildpack using the Java buildpack https://github.com/cloudfoundry/java-buildpack/releases/download/v3.10/java-buildpack-offline-v3.10.zip[here], also located in the `Student Files` folder on your remote desktop. Ensure you are targeting your PCF installation and that you are logged in as admin.
 +
@@ -107,7 +107,7 @@ $ cf push attendees-new-bp -p ./attendees.jar --random-route
 +
 . Navigate to the random-route created for `attendees-new-bp`. attendees has been rebuilt with your added buildpack.  Note any Java version changes.
 
-= Questions
+== Questions
 
 * What is the difference between using the `-b` flag on `cf push`, setting a Java version on an application's environment, and adding a buildpack using `create-buildpack`?
 

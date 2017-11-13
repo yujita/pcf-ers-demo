@@ -70,7 +70,7 @@ $ cf scale attendees -m 768M
 === Scale Out
 . Browse to the _Scale and HA_ page on the _attendees_ application.
 +
-image::screenshot_scaleAndHA.png[]
+image::../images/screenshot_scaleAndHA.png[]
 +
 Review the _Application Environment Information_. 
 +
