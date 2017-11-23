@@ -3,5 +3,4 @@ applications:
 - name: pcf-ers-demo-uat
   memory: 1024MB
   instances: 1
-  host: bb-pcf-ers-demo-uat
   random-route: true

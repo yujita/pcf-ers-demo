@@ -3,5 +3,4 @@ applications:
 - name: pcf-ers-demo-dev
   memory: 1024MB
   instances: 1
-  host: bb-pcf-ers-demo-dev
   random-route: true
