@@ -115,7 +115,7 @@ $ cf app attendees
 . Kill the app. Press the Kill button!
 . Check the state of the app through the cf CLI.
 ----
-$ cf app articulate
+$ cf app attendees
 ----
 Sample output below (notice the requested state vs actual state). In this case, Pivotal Cloud Foundry had already detected the failure and is starting a new instance.
 ----
@@ -146,11 +146,11 @@ A new, healthy app instance has been automatically provisioned to replace the fa
 
 . View which instance was killed.
 ----
-$ cf events articulate
+$ cf events attendees
 ----
 . Scale articulate back to our original settings.
 ----
-$ cf scale articulate -i 1
+$ cf scale attendees -i 1
 ----
 
 === Questions
