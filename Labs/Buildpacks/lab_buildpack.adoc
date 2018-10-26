@@ -91,7 +91,7 @@ For example:
 $ cf create-buildpack super_awesome_java_pack ./java-buildpack-v3.10.zip 1
 ----
 +
-. Confirm that the buildpack was added.
+. Confirm that the buildpack was added.  Note: You must be a Cloud Foundry admin user to run the commands discussed in this section, which means this will not work on Pivotal Web Services (PWS).
 +
 ----
 $ cf buildpacks
