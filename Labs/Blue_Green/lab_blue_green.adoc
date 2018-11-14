@@ -61,7 +61,7 @@ $ cf push attendees-v2 -p ./pcf-ers-demo1-0.0.1-SNAPSHOT.jar -m 768M -n attendee
 . Bind attendees-v2 to the database service created eariler
 +
 ----
-$ cf bind-service attendees attendees-db
+$ cf bind-service attendees-v2 attendees-db
 ----
 _You can ignore the "TIP: Use 'cf restage attendees-v2' to ensure your env variable changes take effect" message at this time._
 +
