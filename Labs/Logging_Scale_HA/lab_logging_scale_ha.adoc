@@ -139,7 +139,7 @@ buildpack:         container-security-provider=1.5.0_RELEASE
 #2   running    2017-08-10T00:30:32Z   2.1%   408.8M of 768M   161.9M of 1G
 ----
 Repeat this command as necessary until `state = running`.
-. In your browser, Refresh the articulate application.
+. In your browser, Refresh the attendees application.
 The app is back up!
 
 A new, healthy app instance has been automatically provisioned to replace the failing one.
@@ -148,7 +148,7 @@ A new, healthy app instance has been automatically provisioned to replace the fa
 ----
 $ cf events attendees
 ----
-. Scale articulate back to our original settings.
+. Scale attendees back to our original settings.
 ----
 $ cf scale attendees -i 1
 ----
